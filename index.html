@@ -4,38 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOEIC in Daily Life - English Conversation</title>
+    <title>TOEIC in Daily Life - Gender Voices</title>
     <style>
-        :root {
-            --primary-color: #4a90e2;
-            --bg-color: #f0f2f5;
-            --a-bubble: #0078ff;
-            --b-bubble: #ffffff;
-        }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg-color); display: flex; flex-direction: column; align-items: center; padding: 40px 20px; margin: 0; }
-        h1 { color: #333; margin-bottom: 10px; }
-        p { color: #666; margin-bottom: 30px; }
-
+        :root { --primary-color: #4a90e2; --bg-color: #f0f2f5; --a-bubble: #ff6b6b; --b-bubble: #ffffff; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-color); display: flex; flex-direction: column; align-items: center; padding: 40px 20px; margin: 0; }
         .menu { display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; justify-content: center; }
         .menu button { padding: 12px 24px; border: none; border-radius: 25px; background: white; color: var(--primary-color); font-weight: bold; cursor: pointer; transition: 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .menu button:hover { background: var(--primary-color); color: white; }
-        .menu button.active { background: var(--primary-color); color: white; }
-
-        .chat-container { width: 100%; max-width: 500px; background: #e5ddd5; padding: 20px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); min-height: 400px; display: flex; flex-direction: column; }
-        .bubble { margin: 10px 0; padding: 12px 16px; border-radius: 15px; font-size: 16px; line-height: 1.4; max-width: 85%; position: relative; animation: fadeIn 0.5s ease forwards; }
-
+        .chat-container { width: 100%; max-width: 500px; background: #e5ddd5; padding: 20px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); min-height: 400px; display: flex; flex-direction: column; overflow-y: auto; }
+        .bubble { margin: 10px 0; padding: 12px 16px; border-radius: 15px; font-size: 16px; line-height: 1.4; max-width: 85%; animation: fadeIn 0.5s ease forwards; }
         .A { background-color: var(--a-bubble); color: white; align-self: flex-start; border-bottom-left-radius: 2px; }
-        .B { background-color: var(--b-bubble); color: #333; align-self: flex-end; border-bottom-right-radius: 2px; text-align: right; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
-
+        .B { background-color: var(--b-bubble); color: #333; align-self: flex-end; border-bottom-right-radius: 2px; text-align: right; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .status { margin-top: 15px; font-size: 14px; color: #888; font-style: italic; }
+        .status { margin-top: 15px; font-size: 14px; color: #888; }
     </style>
 </head>
 <body>
 
-    <h1>Daily TOEIC English</h1>
-    <p>단어를 클릭하면 대화가 시작됩니다.</p>
+    <h1>Daily TOEIC Conversation</h1>
+    <p>A(여성)와 B(남성)의 대화를 들어보세요.</p>
 
     <div class="menu">
         <button onclick="playScene('Accommodate')">1. Accommodate</button>
@@ -43,10 +30,8 @@
         <button onclick="playScene('Adjourn')">3. Adjourn</button>
     </div>
 
-    <div class="chat-container" id="chatBox">
-        </div>
-
-    <div class="status" id="statusLabel">대기 중...</div>
+    <div class="chat-container" id="chatBox"></div>
+    <div class="status" id="statusLabel">준비 완료</div>
 
     <script>
         const scenes = {
@@ -70,6 +55,21 @@
             ]
         };
 
+        let voices = [];
+        let femaleVoice, maleVoice;
+
+        // 시스템에 내장된 목소리 리스트 로딩
+        function loadVoices() {
+            voices = window.speechSynthesis.getVoices();
+            // 여성 목소리 찾기 (Google US English Female, Samantha, Zira 등)
+            femaleVoice = voices.find(v => v.name.includes('Female') || v.name.includes('Zira') || v.name.includes('Samantha') || v.name.includes('Google US English'));
+            // 남성 목소리 찾기 (Google US English Male, David, Alex 등)
+            maleVoice = voices.find(v => v.name.includes('Male') || v.name.includes('David') || v.name.includes('Alex'));
+        }
+
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+        loadVoices();
+
         let isPlaying = false;
 
         function speak(text, speaker, callback) {
@@ -77,11 +77,13 @@
             msg.lang = 'en-US';
 
             if (speaker === 'A') {
-                msg.pitch = 1.3; // 높은 톤
-                msg.rate = 0.85; // 약간 천천히
+                msg.voice = femaleVoice; // 여성 보이스 할당
+                msg.pitch = 1.1;
+                msg.rate = 1.0;
             } else {
-                msg.pitch = 0.8; // 낮은 톤
-                msg.rate = 1.0;  // 보통 속도
+                msg.voice = maleVoice;   // 남성 보이스 할당
+                msg.pitch = 0.9;
+                msg.rate = 1.0;
             }
 
             msg.onend = callback;
@@ -89,17 +91,14 @@
         }
 
         async function playScene(word) {
-            if (isPlaying) return; // 중복 실행 방지
+            if (isPlaying) return;
             isPlaying = true;
 
             const chatBox = document.getElementById('chatBox');
-            const statusLabel = document.getElementById('statusLabel');
             chatBox.innerHTML = '';
-            statusLabel.innerText = `${word} 대화 진행 중...`;
+            document.getElementById('statusLabel').innerText = "재생 중...";
 
-            const dialogue = scenes[word];
-
-            for (const line of dialogue) {
+            for (const line of scenes[word]) {
                 const div = document.createElement('div');
                 div.className = `bubble ${line.speaker}`;
                 div.innerText = `${line.speaker}: ${line.text}`;
@@ -107,11 +106,11 @@
                 chatBox.scrollTop = chatBox.scrollHeight;
 
                 await new Promise(resolve => speak(line.text, line.speaker, resolve));
-                await new Promise(resolve => setTimeout(resolve, 500)); // 문장 사이 짧은 휴지기
+                await new Promise(resolve => setTimeout(resolve, 600));
             }
 
             isPlaying = false;
-            statusLabel.innerText = "대화 완료. 다른 단어를 선택하세요.";
+            document.getElementById('statusLabel').innerText = "재생 완료";
         }
     </script>
 </body>
