@@ -346,25 +346,25 @@ function openStudyPopup() {
     let popupFile = "";
 
     if (currentChapter === 0) {
-        // 발음 카테고리 (index 0)
+        // [카테고리 0: 발음]
         if (currentCategory === 0) {
-            if (currentIndex === 0) popupFile = "pop/1_1.html";
-            else if (currentIndex === 1) popupFile = "pop/1_2.html";
-            else if (currentIndex === 2) popupFile = "pop/1_3.html";
-            else if (currentIndex === 3) popupFile = "pop/1_4.html";
-            else if (currentIndex === 4) popupFile = "pop/1_5.html";
+            if (currentIndex === 0) popupFile = "pop/1_1.html";      // A
+            else if (currentIndex === 1) popupFile = "pop/1_2.html"; // H
+            else if (currentIndex === 2) popupFile = "pop/1_3.html"; // LL
+            else if (currentIndex === 3) popupFile = "pop/1_4.html"; // Ñ
+            else if (currentIndex === 4) popupFile = "pop/1_5.html"; // R
+            else if (currentIndex === 5) popupFile = "pop/1_6.html"; // C (새로 추가)
         }
-
-
-	    // 기초 문법 카테고리 (index 1) 부분 수정
-else if (currentCategory === 1) {
-    if (currentIndex === 0) popupFile = "pop/2_1.html"; // Yo soy
-    else if (currentIndex === 1) popupFile = "pop/2_2.html"; // Tú eres
-    else if (currentIndex === 2 || currentIndex === 3) {
-        popupFile = "pop/2_3.html"; // El libro 와 La mesa 둘 다 이 파일로 연결!
-    }
-    else if (currentIndex === 4) popupFile = "pop/2_4.html"; // Un, Una
-}
+        // [카테고리 1: 기초 문법]
+        else if (currentCategory === 1) {
+            if (currentIndex === 0) popupFile = "pop/2_1.html"; // Yo soy
+            else if (currentIndex === 1) popupFile = "pop/2_2.html"; // Tú eres
+            // El libro(2)와 La mesa(3) 둘 다 2_3.html로 연결
+            else if (currentIndex === 2 || currentIndex === 3) {
+                popupFile = "pop/2_3.html";
+            }
+            else if (currentIndex === 4) popupFile = "pop/2_4.html"; // Un, Una
+        }
     }
 
     if (popupFile !== "") {
@@ -377,7 +377,6 @@ else if (currentCategory === 1) {
             `width=${width},height=${height},left=${left},top=${top},scrollbars=yes`);
     }
 }
-
 
 </script>
 
