@@ -125,6 +125,11 @@
 	<option value="2">Chapter 3: 실전 기초</option>
 	<option value="3">Chapter 4: 길 찾기와 소망</option>
 	<option value="4">Chapter 5: 숫자와 가족</option>
+	<option value="5">Chapter 6: 요일과 날씨</option>
+	<option value="6">Chapter 7: 아픔과 신체</option>
+	<option value="7">Chapter 8: 쇼핑과 색상</option>
+	<option value="8">Chapter 9: 취미와 여가</option>
+	<option value="9">Chapter 10: 미래와 축하</option>
     </select>
 
     <div class="category-tabs" id="tabs">
@@ -145,8 +150,12 @@
         <button class="btn-next" onclick="nextItem()">다음</button>
     </div>
 
-   <div class="footer">
-        <p>전체 내용을 한눈에 보고 싶나요? <a href="total1.html">전체 복습 페이지(Total) 바로가기</a></p>
+    <div class="footer">
+        <p>전체 내용을 한눈에 복습하기</p>
+        <p>
+            <a href="total1.html">Part 1 (Ch 1-5)</a> |
+            <a href="total2.html">Part 2 (Ch 6-10)</a>
+        </p>
     </div>
 
 </div>
@@ -213,7 +222,68 @@
             [ // 회화 (가족 소개 및 요청)
                 {es: "Mi familia", ko: "나의 가족"}, {es: "Necesito ayuda", ko: "도움이 필요해요"}, {es: "Tengo un hermano", ko: "남자 형제가 한 명 있어요"}, {es: "Él es mi amigo", ko: "그는 제 친구예요"}, {es: "¿Tienes hermanos?", ko: "형제가 있나요?"}
             ]
+        ],
+	    // CHAPTER 6 (요일과 날씨)
+        [
+            [ // 발음/시간 (요일)
+                {es: "Lunes, Martes", ko: "월요일, 화요일"}, {es: "Miércoles", ko: "수요일"}, {es: "Jueves, Viernes", ko: "목요일, 금요일"}, {es: "Sábado, Domingo", ko: "토요일, 일요일"}, {es: "Hoy, Mañana", ko: "오늘, 내일"}
+            ],
+            [ // 기초 문법 (현재 상태 Estoy)
+                {es: "Yo estoy", ko: "나는 (지금) ~한 상태다"}, {es: "Cansado/a", ko: "피곤한"}, {es: "Feliz", ko: "행복한"}, {es: "En casa", ko: "집에 있는"}, {es: "Muy bien", ko: "매우 좋은"}
+            ],
+            [ // 필수 회화 (날씨)
+                {es: "¿Qué tiempo hace?", ko: "날씨가 어때요?"}, {es: "Hace calor", ko: "더워요"}, {es: "Hace frío", ko: "추워요"}, {es: "Está lloviendo", ko: "비가 오고 있어요"}, {es: "Buen viaje", ko: "좋은 여행 되세요"}
+            ]
+        ],
+	    // CHAPTER 7 (아픔과 신체)
+        [
+            [ // 발음 (신체 명칭으로 연습)
+                {es: "Cabeza", ko: "까베싸 (머리)"}, {es: "Brazo", ko: "브라쏘 (팔)"}, {es: "Mano", ko: "마노 (손)"}, {es: "Pierna", ko: "삐에르나 (다리)"}, {es: "Corazón", ko: "꼬라쏜 (심장/마음)"}
+            ],
+            [ // 기초 문법 (아픔 표현 Me duele)
+                {es: "Me duele...", ko: "나는 ...이 아프다"}, {es: "Mucho", ko: "많이 / 매우"}, {es: "Un poco", ko: "조금"}, {es: "Enfermo/a", ko: "아픈 (상태)"}, {es: "Médico", ko: "의사"}
+            ],
+            [ // 필수 회화 (병원/약국)
+                {es: "Me duele la cabeza", ko: "머리가 아파요"}, {es: "Tengo fiebre", ko: "열이 나요"}, {es: "Necesito medicina", ko: "약이 필요해요"}, {es: "Estoy 말(mal)", ko: "몸 상태가 안 좋아요"}, {es: "¡Cuídate!", ko: "몸조리 잘해! (조심해)"}
+            ]
+        ],
+	    // CHAPTER 8 (쇼핑과 색상)
+        [
+            [ // 발음 (색상 명칭으로 연습)
+                {es: "Rojo", ko: "로호 (빨간색)"}, {es: "Azul", ko: "아쑬 (파란색)"}, {es: "Verde", ko: "베르데 (초록색)"}, {es: "Amarillo", ko: "아마리요 (노란색)"}, {es: "Blanco / Negro", ko: "블랑꼬 / 네그로 (흰색/검정)"}
+            ],
+            [ // 기초 문법 (지시 대명사와 형용사)
+                {es: "Este / Esta", ko: "이것 (남성/여성)"}, {es: "Ese / Esa", ko: "그것 (남성/여성)"}, {es: "Barato", ko: "값싼"}, {es: "Caro", ko: "비싼"}, {es: "Grande / Pequeño", ko: "큰 / 작은"}
+            ],
+            [ // 필수 회화 (쇼핑하기)
+                {es: "Solo estoy mirando", ko: "그냥 구경하는 중이에요"}, {es: "¿제(p)uedo probármelo?", ko: "입어봐도 될까요?"}, {es: "Es muy caro", ko: "너무 비싸요"}, {es: "¿Tiene 하나(otro) 색(color)?", ko: "다른 색상도 있나요?"}, {es: "Me lo llevo", ko: "이걸로 살게요 (가져갈게요)"}
+            ]
+        ],
+	   // CHAPTER 9 (취미와 여가)
+        [
+            [ // 발음 (취미 활동으로 연습)
+                {es: "Música", ko: "무시까 (음악)"}, {es: "Película", ko: "뻴리꿀라 (영화)"}, {es: "Deporte", ko: "데뽀르떼 (스포츠)"}, {es: "Viaje", ko: "비아헤 (여행)"}, {es: "Baile", ko: "바일레 (춤)"}
+            ],
+            [ // 기초 문법 (좋아함 표현 Me gusta)
+                {es: "Me gusta...", ko: "나는 ...을 좋아한다"}, {es: "Me encanta...", ko: "나는 ...을 정말 좋아한다"}, {es: "Ver", ko: "보다 (Watch)"}, {es: "Escuchar", ko: "듣기 (Listen)"}, {es: "Jugar", ko: "놀다/경기하다 (Play)"}
+            ],
+            [ // 필수 회화 (제안과 초대)
+                {es: "¿Quieres ir al cine?", ko: "영화관에 갈래?"}, {es: "¡Buena idea!", ko: "좋은 생각이야!"}, {es: "Lo siento, no puedo", ko: "미안해, 갈 수 없어"}, {es: "¿Qué haces el sábado?", ko: "토요일에 뭐 하니?"}, {es: "Tengo un plan", ko: "계획(약속)이 있어요"}
+            ]
+        ],
+	    // CHAPTER 10 (미래와 축하)
+        [
+            [ // 발음 (축하와 감탄 연습)
+                {es: "¡Felicidades!", ko: "뻴리씨다데스 (축하해요!)"}, {es: "Cumpleaños", ko: "꿈쁠레아뇨스 (생일)"}, {es: "Suerte", ko: "수에르떼 (운/행운)"}, {es: "Éxito", ko: "엑씨또 (성공)"}, {es: "Abrazo", ko: "아브라쏘 (포옹/인사)"}
+            ],
+            [ // 기초 문법 (미래형 Ir a + 동사원형)
+                {es: "Voy a...", ko: "나는 ...할 것이다"}, {es: "Vas a...", ko: "너는 ...할 것이다"}, {es: "Trabajar", ko: "일하다"}, {es: "Descansar", ko: "쉬다"}, {es: "Estudiar", ko: "공부하다"}
+            ],
+            [ // 필수 회화 (덕담과 작별)
+                {es: "¡Feliz cumpleaños!", ko: "생일 축하해!"}, {es: "¡Buena suerte!", ko: "행운을 빌어!"}, {es: "Voy a comer", ko: "밥 먹으러 갈 거야"}, {es: "¡Hasta luego!", ko: "나중에 봐!"}, {es: "¡Nos vemos!", ko: "우리 또 만나!"}
+            ]
         ]
+
 
     ];
 

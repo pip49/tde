@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스페인어 학습 총정리 2 (Ch 6-10)</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; color: #333; padding: 20px; line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #1d3557; border-bottom: 2px solid #457b9d; padding-bottom: 10px; }
+        h2 { background: #457b9d; color: white; padding: 8px 15px; border-radius: 5px; margin-top: 30px; font-size: 1.1rem; }
+        h3 { color: #e63946; border-left: 5px solid #e63946; padding-left: 10px; margin-top: 20px; font-size: 0.95rem; }
+
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 0.85rem; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f8f9fa; font-weight: bold; width: 30%; }
+        td.es { font-weight: bold; color: #1d3557; width: 35%; }
+        td.ko { color: #666; width: 25%; }
+        td.action { text-align: center; width: 10%; }
+
+        button { background: #f1faee; border: 1px solid #a8dadc; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; }
+        button:hover { background: #457b9d; color: white; }
+
+        .footer { text-align: center; margin-top: 40px; font-size: 0.8rem; color: #999; }
+        .nav-link { display: block; text-align: center; margin-bottom: 20px; text-decoration: none; color: #457b9d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="nav-link">← 메인 학습 페이지로 돌아가기</a>
+    <h1>🇪🇸 스페인어 중급 완성 (Ch 6-10)</h1>
+
+    <div id="content"></div>
+
+    <div class="footer">스페인어 시작 앱 - 후반부 복습 페이지 (6-10)</div>
+</div>
+
+<script>
+    const nextChapters = [
+        { title: "Chapter 6: 요일과 날씨", data: [
+            { cat: "발음/시간 (요일)", items: [{es: "Lunes, Martes", ko: "월요일, 화요일"}, {es: "Miércoles", ko: "수요일"}, {es: "Jueves, Viernes", ko: "목요일, 금요일"}, {es: "Sábado, Domingo", ko: "토요일, 일요일"}, {es: "Hoy, Mañana", ko: "오늘, 내일"}] },
+            { cat: "기초 문법 (현재 상태 Estoy)", items: [{es: "Yo estoy", ko: "나는 (지금) ~한 상태다"}, {es: "Cansado/a", ko: "피곤한"}, {es: "Feliz", ko: "행복한"}, {es: "En casa", ko: "집에 있는"}, {es: "Muy bien", ko: "매우 좋은"}] },
+            { cat: "필수 회화 (날씨)", items: [{es: "¿Qué tiempo hace?", ko: "날씨가 어때요?"}, {es: "Hace calor", ko: "더워요"}, {es: "Hace frío", ko: "추워요"}, {es: "Está lloviendo", ko: "비가 오고 있어요"}, {es: "Buen viaje", ko: "좋은 여행 되세요"}] }
+        ]},
+        { title: "Chapter 7: 아픔과 신체", data: [
+            { cat: "발음/신체 명칭", items: [{es: "Cabeza", ko: "머리"}, {es: "Brazo", ko: "팔"}, {es: "Mano", ko: "손"}, {es: "Pierna", ko: "다리"}, {es: "Corazón", ko: "심장/마음"}] },
+            { cat: "기초 문법 (고통 표현)", items: [{es: "Me duele...", ko: "나는 ...이 아프다"}, {es: "Mucho / Un poco", ko: "많이 / 조금"}, {es: "Enfermo/a", ko: "아픈 상태"}, {es: "Médico", ko: "의사"}, {es: "Medicina", ko: "약"}] },
+            { cat: "필수 회화 (병원/약국)", items: [{es: "Me duele la cabeza", ko: "머리가 아파요"}, {es: "Tengo fiebre", ko: "열이 나요"}, {es: "Necesito medicina", ko: "약이 필요해요"}, {es: "Estoy mal", ko: "몸 상태가 안 좋아요"}, {es: "¡Cuídate!", ko: "몸조리 잘해!"}] }
+        ]},
+        { title: "Chapter 8: 쇼핑과 색상", data: [
+            { cat: "발음/색상 명칭", items: [{es: "Rojo / Azul", ko: "빨강 / 파랑"}, {es: "Verde / Amarillo", ko: "초록 / 노랑"}, {es: "Blanco / Negro", ko: "흰색 / 검정"}, {es: "Color", ko: "색상"}, {es: "Ropa", ko: "옷"}] },
+            { cat: "기초 문법 (지시/형용사)", items: [{es: "Este / Esta", ko: "이것 (남/여)"}, {es: "Ese / Esa", ko: "그것 (남/여)"}, {es: "Barato / Caro", ko: "싼 / 비싼"}, {es: "Grande / Pequeño", ko: "큰 / 작은"}, {es: "Me lo llevo", ko: "이걸로 살게요"}] },
+            { cat: "필수 회화 (쇼핑)", items: [{es: "Solo estoy mirando", ko: "그냥 구경 중이에요"}, {es: "¿Puedo probármelo?", ko: "입어봐도 될까요?"}, {es: "Es muy caro", ko: "너무 비싸요"}, {es: "¿Tiene otro color?", ko: "다른 색상 있나요?"}, {es: "La bolsa, por favor", ko: "봉투 부탁해요"}] }
+        ]},
+        { title: "Chapter 9: 취미와 여가", data: [
+            { cat: "발음/여가 활동", items: [{es: "Música / Película", ko: "음악 / 영화"}, {es: "Deporte / Viaje", ko: "스포츠 / 여행"}, {es: "Baile", ko: "춤"}, {es: "Cine", ko: "영화관"}, {es: "Parque", ko: "공원"}] },
+            { cat: "기초 문법 (선호 표현)", items: [{es: "Me gusta...", ko: "나는 ...을 좋아한다"}, {es: "Me encanta...", ko: "나는 ...을 정말 좋아한다"}, {es: "Ver / Escuchar", ko: "보다 / 듣기"}, {es: "Jugar / Ir", ko: "놀다 / 가다"}, {es: "Plan", ko: "계획"}] },
+            { cat: "필수 회화 (제안)", items: [{es: "¿Quieres ir al cine?", ko: "영화관 갈래?"}, {es: "¡Buena idea!", ko: "좋은 생각이야!"}, {es: "Lo siento, no puedo", ko: "미안, 안 돼"}, {es: "¿Qué haces el sábado?", ko: "토요일에 뭐 하니?"}, {es: "Tengo un plan", ko: "약속이 있어요"}] }
+        ]},
+        { title: "Chapter 10: 미래와 축하", data: [
+            { cat: "발음/축하 명칭", items: [{es: "Felicidades", ko: "축하해"}, {es: "Cumpleaños", ko: "생일"}, {es: "Suerte / Éxito", ko: "운 / 성공"}, {es: "Abrazo", ko: "포옹"}, {es: "Regalo", ko: "선물"}] },
+            { cat: "기초 문법 (미래 계획)", items: [{es: "Voy a...", ko: "나는 ...할 것이다"}, {es: "Vas a...", ko: "너는 ...할 것이다"}, {es: "Trabajar / Estudiar", ko: "일하다 / 공부하다"}, {es: "Descansar / Comer", ko: "쉬다 / 먹다"}, {es: "Mañana", ko: "내일"}] },
+            { cat: "필수 회화 (덕담/작별)", items: [{es: "¡Feliz cumpleaños!", ko: "생일 축하해!"}, {es: "¡Buena suerte!", ko: "행운을 빌어!"}, {es: "Voy a comer", ko: "밥 먹으러 갈 거야"}, {es: "¡Hasta luego!", ko: "나중에 봐!"}, {es: "¡Nos vemos!", ko: "우리 또 만나!"}] }
+        ]}
+    ];
+
+    function speak(text) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'es-ES';
+        window.speechSynthesis.speak(utterance);
+    }
+
+    const contentDiv = document.getElementById('content');
+
+    nextChapters.forEach(chapter => {
+        const h2 = document.createElement('h2');
+        h2.innerText = chapter.title;
+        contentDiv.appendChild(h2);
+
+        chapter.data.forEach(section => {
+            const h3 = document.createElement('h3');
+            h3.innerText = section.cat;
+            contentDiv.appendChild(h3);
+
+            const table = document.createElement('table');
+            let tableHTML = '<thead><tr><th>스페인어</th><th>의미/발음</th><th>듣기</th></tr></thead><tbody>';
+
+            section.items.forEach(item => {
+                tableHTML += `
+                    <tr>
+                        <td class="es">${item.es}</td>
+                        <td class="ko">${item.ko}</td>
+                        <td class="action"><button onclick="speak('${item.es}')">🔊</button></td>
+                    </tr>`;
+            });
+
+            tableHTML += '</tbody>';
+            table.innerHTML = tableHTML;
+            contentDiv.appendChild(table);
+        });
+    });
+</script>
+
+</body>
+</html>
