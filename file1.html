@@ -11,10 +11,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
+            /* justify-content: center 제거하여 상단 정렬 조절 */
+            padding-top: 50px;
             margin: 0;
             background-color: #f0f2f5;
+            height: 100vh;
         }
         .card {
             width: 85%;
@@ -31,6 +32,7 @@
             transition: transform 0.2s;
             text-align: center;
             padding: 20px;
+            margin-top: 10px; /* main 링크와의 간격 */
         }
         .card:active { transform: scale(0.98); }
         .word { font-size: 2.5rem; font-weight: bold; color: #1a73e8; }
@@ -50,9 +52,10 @@
     </style>
 </head>
 <body>
-	<div style="width: 85%; max-width: 400px; text-align: right; margin: 10px 0 -10px 0;">
+    <!-- 수정된 부분: </div> 오타 수정 및 위치 정렬 -->
+    <div style="width: 85%; max-width: 400px; text-align: right;">
         <a href="index.html" style="font-size: 11px; color: #bbb; text-decoration: none; border: 1px solid #eee; padding: 3px 8px; border-radius: 12px;">🏠 main</a>
-    </di
+    </div>
 
     <div class="card" onclick="toggleMeaning()">
         <div id="word" class="word">Hola</div>
@@ -87,7 +90,7 @@
         const currentIdxEl = document.getElementById('currentIdx');
         const totalIdxEl = document.getElementById('totalIdx');
 
-        totalIdxEl.innerText = vocabulary.length;
+        if (totalIdxEl) totalIdxEl.innerText = vocabulary.length;
 
         function updateCard() {
             wordEl.innerText = vocabulary[currentIndex].w;
