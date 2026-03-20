@@ -346,6 +346,7 @@ function openStudyPopup() {
     let popupFile = "";
 
     if (currentChapter === 0) {
+        // 발음 카테고리 (index 0)
         if (currentCategory === 0) {
             if (currentIndex === 0) popupFile = "pop/1_1.html";
             else if (currentIndex === 1) popupFile = "pop/1_2.html";
@@ -353,10 +354,12 @@ function openStudyPopup() {
             else if (currentIndex === 3) popupFile = "pop/1_4.html";
             else if (currentIndex === 4) popupFile = "pop/1_5.html";
         }
+        // 기초 문법 카테고리 (index 1)
         else if (currentCategory === 1) {
             if (currentIndex === 0) popupFile = "pop/2_1.html"; // Yo soy
             else if (currentIndex === 1) popupFile = "pop/2_2.html"; // Tú eres
-            else if (currentIndex === 2) popupFile = "pop/2_3.html"; // El libro, La mesa (추가된 부분)
+            else if (currentIndex === 2) popupFile = "pop/2_3.html"; // El libro, La mesa
+            else if (currentIndex === 4) popupFile = "pop/2_4.html"; // Un, Una (데이터 배열상 4번 인덱스)
         }
     }
 
@@ -369,7 +372,6 @@ function openStudyPopup() {
         window.open(popupFile, 'studyPopup',
             `width=${width},height=${height},left=${left},top=${top},scrollbars=yes`);
     }
-}
 
 </script>
 

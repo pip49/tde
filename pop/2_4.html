@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>부정관사 Un / Una 문법 예문</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #fff9db; text-align: center; }
+        .sentence-card { background: white; padding: 15px; margin-bottom: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-left: 5px solid #fcc419; }
+        .es { font-size: 1.4rem; font-weight: bold; color: #856404; display: block; }
+        .ko { font-size: 1rem; color: #666; margin: 5px 0 10px; display: block; }
+        .tip { font-size: 0.85rem; color: #d9480f; font-weight: bold; margin-bottom: 10px; display: block; }
+        .info-box { background: #fff3bf; padding: 10px; border-radius: 5px; margin-bottom: 20px; font-size: 0.9rem; color: #666; }
+        button { background-color: #fcc419; color: #212529; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        button:hover { background-color: #fab005; }
+    </style>
+</head>
+<body>
+    <h2>🍋 부정관사 : Un (남성) / Una (여성)</h2>
+
+    <div class="info-box">
+        정해지지 않은 막연한 <b>'하나의'</b> 사물을 말할 때 써요!
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">Tengo un libro.</span>
+        <span class="ko">나는 책 한 권(남성)을 가지고 있어요.</span>
+        <button onclick="speak('Tengo un libro.')">🔊 듣기</button>
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">Hay una mesa.</span>
+        <span class="ko">탁자 하나(여성)가 있어요.</span>
+        <button onclick="speak('Hay una mesa.')">🔊 듣기</button>
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">Quiero un café.</span>
+        <span class="ko">커피 한 잔(남성) 원해요.</span>
+        <button onclick="speak('Quiero un café.')">🔊 듣기</button>
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">Es una manzana.</span>
+        <span class="ko">그것은 사과 한 개(여성)입니다.</span>
+        <button onclick="speak('Es una manzana.')">🔊 듣기</button>
+    </div>
+
+    <button onclick="window.close()" style="background-color: #343a40; color: white; margin-top: 20px;">팝업 닫기</button>
+
+    <script>
+        function speak(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'es-ES';
+            window.speechSynthesis.speak(utterance);
+        }
+    </script>
+</body>
+</html>
