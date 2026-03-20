@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>알파벳 Ñ(Eñe) 발음 예문</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #fff1e6; text-align: center; }
+        .sentence-card { background: white; padding: 15px; margin-bottom: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-left: 5px solid #f4a261; }
+        .es { font-size: 1.4rem; font-weight: bold; color: #264653; display: block; }
+        .ko { font-size: 1rem; color: #666; margin: 5px 0 10px; display: block; }
+        .tip { font-size: 0.85rem; color: #e76f51; font-weight: bold; margin-bottom: 10px; display: block; }
+        button { background-color: #f4a261; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        button:hover { background-color: #e76f51; }
+    </style>
+</head>
+<body>
+    <h2>🎨 'Ñ'은 '니으/뉴' 소리가 나요!</h2>
+    <p style="font-size: 0.9rem; color: #555;">(물결 모양 '~'이 포인트입니다!)</p>
+
+    <div class="sentence-card">
+        <span class="es">España es un país.</span>
+        <span class="ko">스페인은 국가입니다.</span>
+        <span class="tip">(에스파냐 O, 에스파나 X)</span>
+        <button onclick="speak('España es un país.')">🔊 듣기</button>
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">Mañana tengo tiempo.</span>
+        <span class="ko">내일 시간이 있어요.</span>
+        <span class="tip">(마냐나 O, 마나나 X)</span>
+        <button onclick="speak('Mañana tengo tiempo.')">🔊 듣기</button>
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">Soy un niño.</span>
+        <span class="ko">나는 소년입니다.</span>
+        <span class="tip">(니뇨 O, 니노 X)</span>
+        <button onclick="speak('Soy un niño.')">🔊 듣기</button>
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">El otoño es bonito.</span>
+        <span class="ko">가을은 예뻐요.</span>
+        <span class="tip">(오또뇨 O, 오또노 X)</span>
+        <button onclick="speak('El otoño es bonito.')">🔊 듣기</button>
+    </div>
+
+    <button onclick="window.close()" style="background-color: #264653; color: white; margin-top: 20px;">팝업 닫기</button>
+
+    <script>
+        function speak(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'es-ES';
+            window.speechSynthesis.speak(utterance);
+        }
+    </script>
+</body>
+</html>
