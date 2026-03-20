@@ -3,55 +3,50 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>알파벳 C(Ce) 발음 예문</title>
+    <title>Chapter 2: C 발음과 음식 예문</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #f8edeb; text-align: center; }
-        .sentence-card { background: white; padding: 15px; margin-bottom: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-left: 5px solid #d00000; }
-        .es { font-size: 1.4rem; font-weight: bold; color: #370617; display: block; }
+        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #fdf0d5; text-align: center; }
+        .sentence-card { background: white; padding: 15px; margin-bottom: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-left: 5px solid #ae2012; }
+        .es { font-size: 1.4rem; font-weight: bold; color: #001219; display: block; }
         .ko { font-size: 1rem; color: #666; margin: 5px 0 10px; display: block; }
-        .tip { font-size: 0.85rem; color: #e85d04; font-weight: bold; margin-bottom: 10px; display: block; }
-        .rule-box { background: #ffd7ba; padding: 10px; border-radius: 5px; margin-bottom: 20px; font-size: 0.9rem; }
-        button { background-color: #dc2f02; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; }
-        button:hover { background-color: #9d0208; }
+        .tip { font-size: 0.85rem; color: #9b2226; font-weight: bold; margin-bottom: 10px; display: block; }
+        button { background-color: #ee9b00; color: #001219; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        button:hover { background-color: #ca6702; color: white; }
     </style>
 </head>
 <body>
-    <h2>🎸 'C'는 두 가지 소리가 나요!</h2>
+    <h2>🍴 Chapter 2 발음: C (Comida)</h2>
+    <p style="font-size: 0.9rem; color: #555;">음식 관련 단어로 배우는 C 발음</p>
 
-    <div class="rule-box">
-        <b>a, o, u</b> 앞에서는 <b>'ㅋ'</b> 소리!<br>
-        <b>e, i</b> 앞에서는 <b>'ㅆ'</b> 소리!
+    <div class="sentence-card">
+        <span class="es">La comida es rica.</span>
+        <span class="ko">음식이 맛있어요.</span>
+        <span class="tip">(Co: '꼬' 소리)</span>
+        <button onclick="speak('La comida es rica.')">🔊 듣기</button>
     </div>
 
     <div class="sentence-card">
-        <span class="es">La casa es grande.</span>
-        <span class="ko">그 집은 커요.</span>
+        <span class="es">¿Quieres café?</span>
+        <span class="ko">커피 마실래요?</span>
         <span class="tip">(Ca: '까' 소리)</span>
-        <button onclick="speak('La casa es grande.')">🔊 듣기</button>
+        <button onclick="speak('¿Quieres café?')">🔊 듣기</button>
     </div>
 
     <div class="sentence-card">
-        <span class="es">Quiero un café.</span>
-        <span class="ko">커피 한 잔 원해요.</span>
-        <span class="tip">(Ca: '까' 소리)</span>
-        <button onclick="speak('Quiero un café.')">🔊 듣기</button>
+        <span class="es">La cena está lista.</span>
+        <span class="ko">저녁 식사가 준비됐어요.</span>
+        <span class="tip">(Ce: '쎄' 소리)</span>
+        <button onclick="speak('La cena está lista.')">🔊 듣기</button>
     </div>
 
     <div class="sentence-card">
-        <span class="es">El cielo es azul.</span>
-        <span class="ko">하늘은 파란색입니다.</span>
+        <span class="es">Me gusta la cocina.</span>
+        <span class="ko">나는 요리(주방)를 좋아해요.</span>
         <span class="tip">(Ci: '씨' 소리)</span>
-        <button onclick="speak('El cielo es azul.')">🔊 듣기</button>
+        <button onclick="speak('Me gusta la cocina.')">🔊 듣기</button>
     </div>
 
-    <div class="sentence-card">
-        <span class="es">Gracias por todo.</span>
-        <span class="ko">모든 게 고마워요.</span>
-        <span class="tip">(ce: '쎄' 소리)</span>
-        <button onclick="speak('Gracias por todo.')">🔊 듣기</button>
-    </div>
-
-    <button onclick="window.close()" style="background-color: #370617; color: white; margin-top: 20px;">팝업 닫기</button>
+    <button onclick="window.close()" style="background-color: #001219; color: white; margin-top: 20px;">팝업 닫기</button>
 
     <script>
         function speak(text) {

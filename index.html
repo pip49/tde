@@ -345,25 +345,30 @@
 function openStudyPopup() {
     let popupFile = "";
 
+    // [Chapter 1 학습 데이터]
     if (currentChapter === 0) {
-        // [카테고리 0: 발음]
         if (currentCategory === 0) {
-            if (currentIndex === 0) popupFile = "pop/1_1.html";      // A
-            else if (currentIndex === 1) popupFile = "pop/1_2.html"; // H
-            else if (currentIndex === 2) popupFile = "pop/1_3.html"; // LL
-            else if (currentIndex === 3) popupFile = "pop/1_4.html"; // Ñ
-            else if (currentIndex === 4) popupFile = "pop/1_5.html"; // R
-            else if (currentIndex === 5) popupFile = "pop/1_6.html"; // C (새로 추가)
+            if (currentIndex === 0) popupFile = "pop/1_1.html";
+            else if (currentIndex === 1) popupFile = "pop/1_2.html";
+            else if (currentIndex === 2) popupFile = "pop/1_3.html";
+            else if (currentIndex === 3) popupFile = "pop/1_4.html";
+            else if (currentIndex === 4) popupFile = "pop/1_5.html";
         }
-        // [카테고리 1: 기초 문법]
         else if (currentCategory === 1) {
-            if (currentIndex === 0) popupFile = "pop/2_1.html"; // Yo soy
-            else if (currentIndex === 1) popupFile = "pop/2_2.html"; // Tú eres
-            // El libro(2)와 La mesa(3) 둘 다 2_3.html로 연결
-            else if (currentIndex === 2 || currentIndex === 3) {
-                popupFile = "pop/2_3.html";
+            if (currentIndex === 0) popupFile = "pop/2_1.html";
+            else if (currentIndex === 1) popupFile = "pop/2_2.html";
+            else if (currentIndex === 2 || currentIndex === 3) popupFile = "pop/2_3.html";
+            else if (currentIndex === 4) popupFile = "pop/2_4.html";
+        }
+    }
+
+    // [Chapter 2 학습 데이터] - 새로 수정된 부분
+    else if (currentChapter === 1) {
+        if (currentCategory === 0) {
+            // Chapter 2 발음의 첫 번째 항목인 C(Comida)를 클릭했을 때
+            if (currentIndex === 0) {
+                popupFile = "pop/1_6.html";
             }
-            else if (currentIndex === 4) popupFile = "pop/2_4.html"; // Un, Una
         }
     }
 
