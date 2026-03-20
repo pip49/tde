@@ -342,23 +342,20 @@
 
     updateDisplay();
 
-
 function openStudyPopup() {
     let popupFile = "";
 
-    // 챕터 1 (index 0) 인 경우
     if (currentChapter === 0) {
-        // 발음 카테고리 (index 0)
         if (currentCategory === 0) {
             if (currentIndex === 0) popupFile = "pop/1_1.html";
             else if (currentIndex === 1) popupFile = "pop/1_2.html";
             else if (currentIndex === 2) popupFile = "pop/1_3.html";
             else if (currentIndex === 3) popupFile = "pop/1_4.html";
             else if (currentIndex === 4) popupFile = "pop/1_5.html";
-        } 
-        // 기초 문법 카테고리 (index 1) - 추가된 부분
+        }
         else if (currentCategory === 1) {
             if (currentIndex === 0) popupFile = "pop/2_1.html"; // Yo soy
+            else if (currentIndex === 1) popupFile = "pop/2_2.html"; // Tú eres (추가된 부분)
         }
     }
 
@@ -367,8 +364,8 @@ function openStudyPopup() {
         const height = window.innerHeight / 2;
         const left = (window.screen.width - width) / 2;
         const top = (window.screen.height - height) / 2;
-        
-        window.open(popupFile, 'studyPopup', 
+
+        window.open(popupFile, 'studyPopup',
             `width=${width},height=${height},left=${left},top=${top},scrollbars=yes`);
     }
 }

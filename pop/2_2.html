@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tú eres (너는 ~이다) 문법 예문</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #fff3e0; text-align: center; }
+        .sentence-card { background: white; padding: 15px; margin-bottom: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-left: 5px solid #ef6c00; }
+        .es { font-size: 1.4rem; font-weight: bold; color: #e65100; display: block; }
+        .ko { font-size: 1rem; color: #666; margin: 5px 0 10px; display: block; }
+        .tip { font-size: 0.85rem; color: #f57c00; font-weight: bold; margin-bottom: 10px; display: block; }
+        button { background-color: #ef6c00; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        button:hover { background-color: #e65100; }
+    </style>
+</head>
+<body>
+    <h2>👥 Tú eres : 너는 ~이야</h2>
+    <p style="font-size: 0.9rem; color: #555;">(상대방의 이름, 국적, 특징 등을 말할 때)</p>
+
+    <div class="sentence-card">
+        <span class="es">Tú eres 내(mi) 친구(amigo).</span>
+        <span class="ko">너는 내 친구야.</span>
+        <button onclick="speak('Tú eres mi amigo.')">🔊 듣기</button>
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">Tú eres muy amable.</span>
+        <span class="ko">너는 매우 친절해.</span>
+        <button onclick="speak('Tú eres muy amable.')">🔊 듣기</button>
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">Tú eres inteligente.</span>
+        <span class="ko">너는 똑똑해.</span>
+        <button onclick="speak('Tú eres inteligente.')">🔊 듣기</button>
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">¿Tú eres de Core(a)?</span>
+        <span class="ko">너는 한국에서 왔니? (한국 사람이니?)</span>
+        <button onclick="speak('¿Tú eres de Corea?')">🔊 듣기</button>
+    </div>
+
+    <button onclick="window.close()" style="background-color: #e65100; color: white; margin-top: 20px;">팝업 닫기</button>
+
+    <script>
+        function speak(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'es-ES';
+            window.speechSynthesis.speak(utterance);
+        }
+    </script>
+</body>
+</html>
