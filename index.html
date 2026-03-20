@@ -94,6 +94,24 @@
         }
         .tab.active { background: var(--accent-color); color: white; }
         #itemCounter { font-size: 0.8rem; color: #aaa; margin-bottom: 10px; }
+
+	/* 푸터 링크 스타일 */
+        .footer {
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+            font-size: 0.85rem;
+        }
+        .footer a {
+            color: #457b9d;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+            color: var(--accent-color);
+        }
+
     </style>
 </head>
 <body>
@@ -126,6 +144,11 @@
         <button class="btn-prev" onclick="prevItem()">이전</button>
         <button class="btn-next" onclick="nextItem()">다음</button>
     </div>
+
+   <div class="footer">
+        <p>전체 내용을 한눈에 보고 싶나요? <a href="total1.html">전체 복습 페이지(Total) 바로가기</a></p>
+    </div>
+
 </div>
 
 <script>

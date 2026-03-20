@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스페인어 학습 총정리 (Ch 1-5)</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; color: #333; padding: 20px; line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #e63946; border-bottom: 2px solid #e63946; padding-bottom: 10px; }
+        h2 { background: #1d3557; color: white; padding: 8px 15px; border-radius: 5px; margin-top: 30px; font-size: 1.2rem; }
+        h3 { color: #457b9d; border-left: 5px solid #457b9d; padding-left: 10px; margin-top: 20px; font-size: 1rem; }
+
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 0.9rem; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f8f9fa; font-weight: bold; width: 30%; }
+        td.es { font-weight: bold; color: #1d3557; width: 35%; }
+        td.ko { color: #666; width: 25%; }
+        td.action { text-align: center; width: 10%; }
+
+        button { background: #a8dadc; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; }
+        button:hover { background: #457b9d; color: white; }
+
+        .footer { text-align: center; margin-top: 40px; font-size: 0.8rem; color: #999; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🇪🇸 스페인어 기초 총정리 (Ch 1-5)</h1>
+
+    <div id="content"></div>
+
+    <div class="footer">스페인어 시작 앱 - 전체 복습 페이지</div>
+</div>
+
+<script>
+    const allChapters = [
+        { title: "Chapter 1: 기초 다지기", data: [
+            { cat: "발음/알파벳", items: [{es: "A", ko: "아 (사과: Manzana)"}, {es: "H", ko: "아체 (묵음)"}, {es: "LL", ko: "에요 (이/지 발음)"}, {es: "Ñ", ko: "에녜 (니으/뉴 발음)"}, {es: "R", ko: "에레 (굴리는 'ㄹ')"}] },
+            { cat: "기초 문법", items: [{es: "Yo soy", ko: "나는 ~이다"}, {es: "Tú eres", ko: "너는 ~이다"}, {es: "El libro", ko: "그 책 (남성)"}, {es: "La mesa", ko: "그 탁자 (여성)"}, {es: "Un, Una", ko: "하나의 (부정관사)"}] },
+            { cat: "필수 회화", items: [{es: "¡Hola!", ko: "안녕!"}, {es: "Gracias", ko: "감사합니다"}, {es: "¿Cómo estás?", ko: "어떻게 지내?"}, {es: "Mucho gusto", ko: "반가워요"}, {es: "Adiós", ko: "잘 가요"}] }
+        ]},
+        { title: "Chapter 2: 일상 확장", data: [
+            { cat: "발음/주의 자음", items: [{es: "C (+e, i)", ko: "쎄, 씨 (S발음)"}, {es: "G (+e, i)", ko: "헤, 히 (ㅎ 발음)"}, {es: "Z", ko: "쎄 (영어 th/S발음)"}, {es: "J", ko: "호따 ('ㅎ' 소리)"}, {es: "V", ko: "우베 (B와 같은 발음)"}] },
+            { cat: "기초 문법", items: [{es: "Uno, Dos, Tres", ko: "1, 2, 3"}, {es: "Yo tengo", ko: "나는 가지고 있다"}, {es: "Mi, Tu, Su", ko: "나의, 너의, 그의"}, {es: "Chico, Chica", ko: "소년, 소녀"}, {es: "Buenos", ko: "좋은 (복수형 -s)"}] },
+            { cat: "필수 회화", items: [{es: "Buenos días", ko: "좋은 아침"}, {es: "Buenas tardes", ko: "좋은 오후"}, {es: "Buenas noches", ko: "좋은 밤"}, {es: "Perdón", ko: "죄송합니다"}, {es: "De nada", ko: "천만에요"}] }
+        ]},
+        { title: "Chapter 3: 실전 기초", data: [
+            { cat: "발음/복합 모음", items: [{es: "Qué", ko: "께 ('u'는 묵음)"}, {es: "Qui", ko: "끼 ('u'는 묵음)"}, {es: "Gue", ko: "게 ('u'는 묵음)"}, {es: "Gui", ko: "기 ('u'는 묵음)"}, {es: "Acción", ko: "악씨온 (강세 주의)"}] },
+            { cat: "기초 문법", items: [{es: "Yo como", ko: "나는 먹는다"}, {es: "Yo bebo", ko: "나는 마신다"}, {es: "¿Qué?", ko: "무엇?"}, {es: "¿Quién?", ko: "누구?"}, {es: "¿Dónde?", ko: "어디?"}] },
+            { cat: "실전 회화", items: [{es: "La cuenta, por favor", ko: "계산서 부탁합니다"}, {es: "¡Salud!", ko: "건배!"}, {es: "¡Qué rico!", ko: "정말 맛있어요!"}, {es: "Agua, por favor", ko: "물 좀 주세요"}, {es: "¿Cuánto cuesta?", ko: "얼마인가요?"}] }
+        ]},
+        { title: "Chapter 4: 길 찾기와 소망", data: [
+            { cat: "발음/심화", items: [{es: "B / V", ko: "발음 같음 ('ㅂ')"}, {es: "Y / LL", ko: "이/지 (예: Yo 요/조)"}, {es: "X", ko: "엑시스 ('ks' 소리)"}, {es: "S", ko: "에쎄 (항상 'ㅅ' 소리)"}, {es: "U", ko: "우 (입술 내밀기)"}] },
+            { cat: "기초 문법", items: [{es: "Yo quiero", ko: "나는 원한다"}, {es: "Aquí / Allí", ko: "여기 / 저기"}, {es: "Cerca / Lejos", ko: "가까운 / 먼"}, {es: "Izquierda", ko: "왼쪽"}, {es: "Derecha", ko: "오른쪽"}] },
+            { cat: "길 찾기 회화", items: [{es: "¿Dónde está...?", ko: "...은 어디 있나요?"}, {es: "El baño", ko: "화장실"}, {es: "La estación", ko: "역"}, {es: "¡Ayúdame!", ko: "도와주세요!"}, {es: "Siga recto", ko: "직진하세요"}] }
+        ]},
+        { title: "Chapter 5: 숫자와 가족", data: [
+            { cat: "발음/숫자 읽기", items: [{es: "Once, Doce", ko: "11, 12"}, {es: "Trece, Catorce", ko: "13, 14"}, {es: "Quince", ko: "15"}, {es: "Dieciséis", ko: "16"}, {es: "Veinte", ko: "20"}] },
+            { cat: "기초 문법", items: [{es: "Yo necesito", ko: "나는 필요하다"}, {es: "Padre / Madre", ko: "아버지 / 어머니"}, {es: "Hermano", ko: "남자 형제"}, {es: "Hermana", ko: "여자 형제"}, {es: "Amigo", ko: "친구"}] },
+            { cat: "가족 및 요청", items: [{es: "Mi familia", ko: "나의 가족"}, {es: "Necesito ayuda", ko: "도움이 필요해요"}, {es: "Tengo un hermano", ko: "남자 형제 있어요"}, {es: "Él es mi amigo", ko: "그는 내 친구예요"}, {es: "¿Tienes hermanos?", ko: "형제가 있나요?"}] }
+        ]}
+    ];
+
+    function speak(text) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'es-ES';
+        window.speechSynthesis.speak(utterance);
+    }
+
+    const contentDiv = document.getElementById('content');
+
+    allChapters.forEach(chapter => {
+        const h2 = document.createElement('h2');
+        h2.innerText = chapter.title;
+        contentDiv.appendChild(h2);
+
+        chapter.data.forEach(section => {
+            const h3 = document.createElement('h3');
+            h3.innerText = section.cat;
+            contentDiv.appendChild(h3);
+
+            const table = document.createElement('table');
+            let tableHTML = '<thead><tr><th>스페인어</th><th>의미/발음</th><th>듣기</th></tr></thead><tbody>';
+
+            section.items.forEach(item => {
+                tableHTML += `
+                    <tr>
+                        <td class="es">${item.es}</td>
+                        <td class="ko">${item.ko}</td>
+                        <td class="action"><button onclick="speak('${item.es}')">🔊</button></td>
+                    </tr>`;
+            });
+
+            tableHTML += '</tbody>';
+            table.innerHTML = tableHTML;
+            contentDiv.appendChild(table);
+        });
+    });
+</script>
+
+</body>
+</html>
