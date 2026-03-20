@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>스페인어 시작 - 기초 학습</title>
+    <title>스페인어 시작 - 챕터별 학습</title>
     <style>
         :root {
             --bg-color: #f8f9fa;
@@ -26,13 +26,25 @@
             width: 100%;
             text-align: center;
         }
-        h1 { color: var(--accent-color); font-size: 1.5rem; }
+        h1 { color: var(--accent-color); font-size: 1.5rem; margin-bottom: 10px; }
+
+        /* 챕터 선택기 스타일 */
+        .chapter-select {
+            margin-bottom: 20px;
+            padding: 8px 15px;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: 2px solid var(--accent-color);
+            background: white;
+            cursor: pointer;
+        }
+
         .card {
             background: white;
             padding: 40px 20px;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin-top: 30px;
+            margin-top: 20px;
             min-height: 250px;
             display: flex;
             flex-direction: column;
@@ -67,7 +79,7 @@
         .btn-speak { background-color: #457b9d; color: white; width: 100%; max-width: 200px; }
         .btn-prev, .btn-next { background-color: #a8dadc; color: #1d3557; }
         .category-tabs {
-            margin-top: 20px;
+            margin-top: 10px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -81,12 +93,18 @@
             cursor: pointer;
         }
         .tab.active { background: var(--accent-color); color: white; }
+        #itemCounter { font-size: 0.8rem; color: #aaa; margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h1>🇪🇸 스페인어 시작</h1>
+
+    <select id="chapterSelector" class="chapter-select" onchange="changeChapter(this.value)">
+        <option value="0">Chapter 1: 기초 다지기</option>
+        <option value="1">Chapter 2: 일상 확장</option>
+    </select>
 
     <div class="category-tabs" id="tabs">
         <div class="tab active" onclick="changeCategory(0)">발음/알파벳</div>
@@ -95,6 +113,7 @@
     </div>
 
     <div class="card">
+        <div id="itemCounter">1 / 5</div>
         <div class="main-text" id="mainText">Hola</div>
         <div class="sub-text" id="subText">안녕 (올라)</div>
         <button class="btn-speak" onclick="speak()">🔊 발음 듣기</button>
@@ -107,46 +126,58 @@
 </div>
 
 <script>
-    const studyData = [
-        // 카테고리 0: 발음/알파벳
+    // 챕터별로 데이터를 묶은 새로운 구조입니다.
+    const allChapters = [
+        // CHAPTER 1
         [
-            {es: "A", ko: "아 (사과: Manzana)"},
-            {es: "H", ko: "아체 (묵음, 발음 안 함)"},
-            {es: "LL", ko: "에요 (이/지 발음, 예: Ella 에야)"},
-            {es: "Ñ", ko: "에녜 (니으/뉴 발음, 예: Niño 니뇨)"},
-            {es: "R", ko: "에레 (굴리는 'ㄹ' 발음)"}
+            [ // 발음
+                {es: "A", ko: "아 (사과: Manzana)"}, {es: "H", ko: "아체 (묵음)"}, {es: "LL", ko: "에요 (이/지 발음)"}, {es: "Ñ", ko: "에녜 (니으/뉴 발음)"}, {es: "R", ko: "에레 (굴리는 'ㄹ')"}
+            ],
+            [ // 문법
+                {es: "Yo soy", ko: "나는 ~이다 (성격/이름)"}, {es: "Tú eres", ko: "너는 ~이다"}, {es: "El libro", ko: "그 책 (남성)"}, {es: "La mesa", ko: "그 탁자 (여성)"}, {es: "Un, Una", ko: "하나의 (부정관사)"}
+            ],
+            [ // 회화
+                {es: "¡Hola!", ko: "안녕!"}, {es: "Gracias", ko: "감사합니다"}, {es: "¿Cómo estás?", ko: "어떻게 지내?"}, {es: "Mucho gusto", ko: "반가워요"}, {es: "Adiós", ko: "잘 가요"}
+            ]
         ],
-        // 카테고리 1: 기초 문법
+        // CHAPTER 2
         [
-            {es: "Yo soy", ko: "나는 ~이다 (성격/이름)"},
-            {es: "Tú eres", ko: "너는 ~이다"},
-            {es: "El libro", ko: "그 책 (남성 명사)"},
-            {es: "La mesa", ko: "그 탁자 (여성 명사)"},
-            {es: "Un, Una", ko: "하나의 (부정관사)"}
-        ],
-        // 카테고리 2: 필수 회화
-        [
-            {es: "¡Hola!", ko: "안녕!"},
-            {es: "Gracias", ko: "감사합니다"},
-            {es: "¿Cómo estás?", ko: "어떻게 지내?"},
-            {es: "Mucho gusto", ko: "반가워요"},
-            {es: "Adiós", ko: "잘 가요"}
+            [ // 발음
+                {es: "C (+e, i)", ko: "쎄, 씨 (S발음)"}, {es: "G (+e, i)", ko: "헤, 히 (ㅎ 발음)"}, {es: "Z", ko: "쎄 (영어 th/S발음)"}, {es: "J", ko: "호따 ('ㅎ' 소리)"}, {es: "V", ko: "우베 (B와 같은 발음)"}
+            ],
+            [ // 문법
+                {es: "Uno, Dos, Tres", ko: "1, 2, 3"}, {es: "Yo tengo", ko: "나는 가지고 있다"}, {es: "Mi, Tu, Su", ko: "나의, 너의, 그의"}, {es: "Chico, Chica", ko: "소년, 소녀 (성별 어미)"}, {es: "Buenos", ko: "좋은 (복수형 -s)"}
+            ],
+            [ // 회화
+                {es: "Buenos días", ko: "좋은 아침"}, {es: "Buenas tardes", ko: "좋은 오후"}, {es: "Buenas noches", ko: "좋은 밤"}, {es: "Perdón", ko: "죄송합니다"}, {es: "De nada", ko: "천만에요"}
+            ]
         ]
     ];
 
+    let currentChapter = 0;
     let currentCategory = 0;
     let currentIndex = 0;
 
     function updateDisplay() {
-        const item = studyData[currentCategory][currentIndex];
+        const currentData = allChapters[currentChapter][currentCategory];
+        const item = currentData[currentIndex];
+
         document.getElementById('mainText').innerText = item.es;
         document.getElementById('subText').innerText = item.ko;
+        document.getElementById('itemCounter').innerText = `${currentIndex + 1} / ${currentData.length}`;
 
-        // 탭 활성화 상태 업데이트
+        // 탭 업데이트
         const tabs = document.querySelectorAll('.tab');
         tabs.forEach((tab, index) => {
             tab.classList.toggle('active', index === currentCategory);
         });
+    }
+
+    function changeChapter(val) {
+        currentChapter = parseInt(val);
+        currentCategory = 0;
+        currentIndex = 0;
+        updateDisplay();
     }
 
     function changeCategory(catIndex) {
@@ -156,7 +187,7 @@
     }
 
     function nextItem() {
-        if (currentIndex < studyData[currentCategory].length - 1) {
+        if (currentIndex < allChapters[currentChapter][currentCategory].length - 1) {
             currentIndex++;
             updateDisplay();
         }
@@ -172,11 +203,10 @@
     function speak() {
         const text = document.getElementById('mainText').innerText;
         const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'es-ES'; // 스페인어(스페인) 설정
+        utterance.lang = 'es-ES';
         window.speechSynthesis.speak(utterance);
     }
 
-    // 초기 표시
     updateDisplay();
 </script>
 
