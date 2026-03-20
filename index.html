@@ -342,29 +342,34 @@
 
     updateDisplay();
 
+
 function openStudyPopup() {
-    // 챕터 1의 첫 번째 카테고리(발음)일 때만 실행
-    if (currentChapter === 0 && currentCategory === 0) {
-        let popupFile = "";
+    let popupFile = "";
 
-        // 항목 인덱스별 파일 매칭
-        if (currentIndex === 0) popupFile = "pop/1_1.html";      // A
-        else if (currentIndex === 1) popupFile = "pop/1_2.html"; // H
-        else if (currentIndex === 2) popupFile = "pop/1_3.html"; // LL
-        else if (currentIndex === 3) popupFile = "pop/1_4.html"; // Ñ
-        else if (currentIndex === 4) popupFile = "pop/1_5.html"; // R (추가됨)
-
-        if (popupFile !== "") {
-            // 브라우저 크기의 1/2 크기로 설정
-            const width = window.innerWidth / 2;
-            const height = window.innerHeight / 2;
-            // 화면 중앙 정렬을 위한 좌표 계산
-            const left = (window.screen.width - width) / 2;
-            const top = (window.screen.height - height) / 2;
-
-            window.open(popupFile, 'studyPopup',
-                `width=${width},height=${height},left=${left},top=${top},scrollbars=yes`);
+    // 챕터 1 (index 0) 인 경우
+    if (currentChapter === 0) {
+        // 발음 카테고리 (index 0)
+        if (currentCategory === 0) {
+            if (currentIndex === 0) popupFile = "pop/1_1.html";
+            else if (currentIndex === 1) popupFile = "pop/1_2.html";
+            else if (currentIndex === 2) popupFile = "pop/1_3.html";
+            else if (currentIndex === 3) popupFile = "pop/1_4.html";
+            else if (currentIndex === 4) popupFile = "pop/1_5.html";
+        } 
+        // 기초 문법 카테고리 (index 1) - 추가된 부분
+        else if (currentCategory === 1) {
+            if (currentIndex === 0) popupFile = "pop/2_1.html"; // Yo soy
         }
+    }
+
+    if (popupFile !== "") {
+        const width = window.innerWidth / 2;
+        const height = window.innerHeight / 2;
+        const left = (window.screen.width - width) / 2;
+        const top = (window.screen.height - height) / 2;
+        
+        window.open(popupFile, 'studyPopup', 
+            `width=${width},height=${height},left=${left},top=${top},scrollbars=yes`);
     }
 }
 

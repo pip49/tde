@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Yo soy (나는 ~이다) 문법 예문</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #e8f5e9; text-align: center; }
+        .sentence-card { background: white; padding: 15px; margin-bottom: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-left: 5px solid #2e7d32; }
+        .es { font-size: 1.4rem; font-weight: bold; color: #1b5e20; display: block; }
+        .ko { font-size: 1rem; color: #666; margin: 5px 0 10px; display: block; }
+        .tip { font-size: 0.85rem; color: #388e3c; font-weight: bold; margin-bottom: 10px; display: block; }
+        button { background-color: #2e7d32; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        button:hover { background-color: #1b5e20; }
+    </style>
+</head>
+<body>
+    <h2>👤 Yo soy : 나는 ~입니다</h2>
+    <p style="font-size: 0.9rem; color: #555;">(이름, 국적, 직업 등 변하지 않는 특징)</p>
+
+    <div class="sentence-card">
+        <span class="es">Yo soy coreano.</span>
+        <span class="ko">나는 한국인(남자)입니다.</span>
+        <span class="tip">(여성일 경우: Yo soy coreana)</span>
+        <button onclick="speak('Yo soy coreano.')">🔊 듣기</button>
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">Yo soy estudiante.</span>
+        <span class="ko">나는 학생입니다.</span>
+        <button onclick="speak('Yo soy estudiante.')">🔊 듣기</button>
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">Yo soy feliz.</span>
+        <span class="ko">나는 (행복한 성격의) 사람입니다.</span>
+        <button onclick="speak('Yo soy feliz.')">🔊 듣기</button>
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">Yo soy Juan.</span>
+        <span class="ko">나는 후안(Juan)입니다.</span>
+        <button onclick="speak('Yo soy Juan.')">🔊 듣기</button>
+    </div>
+
+    <button onclick="window.close()" style="background-color: #1b5e20; color: white; margin-top: 20px;">팝업 닫기</button>
+
+    <script>
+        function speak(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'es-ES';
+            window.speechSynthesis.speak(utterance);
+        }
+    </script>
+</body>
+</html>
