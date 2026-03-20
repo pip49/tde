@@ -1,117 +1,184 @@
 
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOEIC in Daily Life - Gender Voices</title>
+    <title>스페인어 시작 - 기초 학습</title>
     <style>
-        :root { --primary-color: #4a90e2; --bg-color: #f0f2f5; --a-bubble: #ff6b6b; --b-bubble: #ffffff; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-color); display: flex; flex-direction: column; align-items: center; padding: 40px 20px; margin: 0; }
-        .menu { display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; justify-content: center; }
-        .menu button { padding: 12px 24px; border: none; border-radius: 25px; background: white; color: var(--primary-color); font-weight: bold; cursor: pointer; transition: 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .menu button:hover { background: var(--primary-color); color: white; }
-        .chat-container { width: 100%; max-width: 500px; background: #e5ddd5; padding: 20px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); min-height: 400px; display: flex; flex-direction: column; overflow-y: auto; }
-        .bubble { margin: 10px 0; padding: 12px 16px; border-radius: 15px; font-size: 16px; line-height: 1.4; max-width: 85%; animation: fadeIn 0.5s ease forwards; }
-        .A { background-color: var(--a-bubble); color: white; align-self: flex-start; border-bottom-left-radius: 2px; }
-        .B { background-color: var(--b-bubble); color: #333; align-self: flex-end; border-bottom-right-radius: 2px; text-align: right; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .status { margin-top: 15px; font-size: 14px; color: #888; }
+        :root {
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --accent-color: #e63946;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 { color: var(--accent-color); font-size: 1.5rem; }
+        .card {
+            background: white;
+            padding: 40px 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-top: 30px;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .main-text {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            word-break: break-word;
+        }
+        .sub-text {
+            font-size: 1.5rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .nav-buttons {
+            margin-top: 30px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-speak { background-color: #457b9d; color: white; width: 100%; max-width: 200px; }
+        .btn-prev, .btn-next { background-color: #a8dadc; color: #1d3557; }
+        .category-tabs {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+        }
+        .tab {
+            padding: 8px 15px;
+            background: #ddd;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        .tab.active { background: var(--accent-color); color: white; }
     </style>
 </head>
 <body>
 
-    <h1>Daily TOEIC Conversation</h1>
-    <p>A(여성)와 B(남성)의 대화를 들어보세요.</p>
+<div class="container">
+    <h1>🇪🇸 스페인어 시작</h1>
 
-    <div class="menu">
-        <button onclick="playScene('Accommodate')">1. Accommodate</button>
-        <button onclick="playScene('Acquisition')">2. Acquisition</button>
-        <button onclick="playScene('Adjourn')">3. Adjourn</button>
+    <div class="category-tabs" id="tabs">
+        <div class="tab active" onclick="changeCategory(0)">발음/알파벳</div>
+        <div class="tab" onclick="changeCategory(1)">기초 문법</div>
+        <div class="tab" onclick="changeCategory(2)">필수 회화</div>
     </div>
 
-    <div class="chat-container" id="chatBox"></div>
-    <div class="status" id="statusLabel">준비 완료</div>
+    <div class="card">
+        <div class="main-text" id="mainText">Hola</div>
+        <div class="sub-text" id="subText">안녕 (올라)</div>
+        <button class="btn-speak" onclick="speak()">🔊 발음 듣기</button>
+    </div>
 
-    <script>
-        const scenes = {
-            'Accommodate': [
-                { speaker: 'A', text: "I'm trying to book a table for our group, but can they accommodate 10 people?" },
-                { speaker: 'B', text: "I called them earlier, and they said they can easily accommodate large groups." },
-                { speaker: 'A', text: "That’s great! I was worried because the restaurant looks a bit small." },
-                { speaker: 'B', text: "Don't worry, they have a spacious private room in the back." }
-            ],
-            'Acquisition': [
-                { speaker: 'A', text: "Is that a new camera? It looks like a very expensive acquisition." },
-                { speaker: 'B', text: "Yes, it’s my latest acquisition for my photography hobby." },
-                { speaker: 'A', text: "The image quality is amazing; you definitely made a good choice." },
-                { speaker: 'B', text: "Thanks! I spent weeks reading reviews before buying it." }
-            ],
-            'Adjourn': [
-                { speaker: 'A', text: "We’ve been studying for three hours; shall we adjourn the meeting for now?" },
-                { speaker: 'B', text: "I agree. Let’s adjourn and go grab some lunch together." },
-                { speaker: 'A', text: "Perfect! I know a great sandwich shop just around the corner." },
-                { speaker: 'B', text: "Sounds like a plan. I’m starving!" }
-            ]
-        };
+    <div class="nav-buttons">
+        <button class="btn-prev" onclick="prevItem()">이전</button>
+        <button class="btn-next" onclick="nextItem()">다음</button>
+    </div>
+</div>
 
-        let voices = [];
-        let femaleVoice, maleVoice;
+<script>
+    const studyData = [
+        // 카테고리 0: 발음/알파벳
+        [
+            {es: "A", ko: "아 (사과: Manzana)"},
+            {es: "H", ko: "아체 (묵음, 발음 안 함)"},
+            {es: "LL", ko: "에요 (이/지 발음, 예: Ella 에야)"},
+            {es: "Ñ", ko: "에녜 (니으/뉴 발음, 예: Niño 니뇨)"},
+            {es: "R", ko: "에레 (굴리는 'ㄹ' 발음)"}
+        ],
+        // 카테고리 1: 기초 문법
+        [
+            {es: "Yo soy", ko: "나는 ~이다 (성격/이름)"},
+            {es: "Tú eres", ko: "너는 ~이다"},
+            {es: "El libro", ko: "그 책 (남성 명사)"},
+            {es: "La mesa", ko: "그 탁자 (여성 명사)"},
+            {es: "Un, Una", ko: "하나의 (부정관사)"}
+        ],
+        // 카테고리 2: 필수 회화
+        [
+            {es: "¡Hola!", ko: "안녕!"},
+            {es: "Gracias", ko: "감사합니다"},
+            {es: "¿Cómo estás?", ko: "어떻게 지내?"},
+            {es: "Mucho gusto", ko: "반가워요"},
+            {es: "Adiós", ko: "잘 가요"}
+        ]
+    ];
 
-        // 시스템에 내장된 목소리 리스트 로딩
-        function loadVoices() {
-            voices = window.speechSynthesis.getVoices();
-            // 여성 목소리 찾기 (Google US English Female, Samantha, Zira 등)
-            femaleVoice = voices.find(v => v.name.includes('Female') || v.name.includes('Zira') || v.name.includes('Samantha') || v.name.includes('Google US English'));
-            // 남성 목소리 찾기 (Google US English Male, David, Alex 등)
-            maleVoice = voices.find(v => v.name.includes('Male') || v.name.includes('David') || v.name.includes('Alex'));
+    let currentCategory = 0;
+    let currentIndex = 0;
+
+    function updateDisplay() {
+        const item = studyData[currentCategory][currentIndex];
+        document.getElementById('mainText').innerText = item.es;
+        document.getElementById('subText').innerText = item.ko;
+
+        // 탭 활성화 상태 업데이트
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach((tab, index) => {
+            tab.classList.toggle('active', index === currentCategory);
+        });
+    }
+
+    function changeCategory(catIndex) {
+        currentCategory = catIndex;
+        currentIndex = 0;
+        updateDisplay();
+    }
+
+    function nextItem() {
+        if (currentIndex < studyData[currentCategory].length - 1) {
+            currentIndex++;
+            updateDisplay();
         }
+    }
 
-        window.speechSynthesis.onvoiceschanged = loadVoices;
-        loadVoices();
-
-        let isPlaying = false;
-
-        function speak(text, speaker, callback) {
-            const msg = new SpeechSynthesisUtterance(text);
-            msg.lang = 'en-US';
-
-            if (speaker === 'A') {
-                msg.voice = femaleVoice; // 여성 보이스 할당
-                msg.pitch = 1.1;
-                msg.rate = 1.0;
-            } else {
-                msg.voice = maleVoice;   // 남성 보이스 할당
-                msg.pitch = 0.9;
-                msg.rate = 1.0;
-            }
-
-            msg.onend = callback;
-            window.speechSynthesis.speak(msg);
+    function prevItem() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateDisplay();
         }
+    }
 
-        async function playScene(word) {
-            if (isPlaying) return;
-            isPlaying = true;
+    function speak() {
+        const text = document.getElementById('mainText').innerText;
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'es-ES'; // 스페인어(스페인) 설정
+        window.speechSynthesis.speak(utterance);
+    }
 
-            const chatBox = document.getElementById('chatBox');
-            chatBox.innerHTML = '';
-            document.getElementById('statusLabel').innerText = "재생 중...";
+    // 초기 표시
+    updateDisplay();
+</script>
 
-            for (const line of scenes[word]) {
-                const div = document.createElement('div');
-                div.className = `bubble ${line.speaker}`;
-                div.innerText = `${line.speaker}: ${line.text}`;
-                chatBox.appendChild(div);
-                chatBox.scrollTop = chatBox.scrollHeight;
-
-                await new Promise(resolve => speak(line.text, line.speaker, resolve));
-                await new Promise(resolve => setTimeout(resolve, 600));
-            }
-
-            isPlaying = false;
-            document.getElementById('statusLabel').innerText = "재생 완료";
-        }
-    </script>
 </body>
 </html>
