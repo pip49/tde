@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>알파벳 H(Hache) 무음 예문</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #fdf0d5; text-align: center; }
+        .sentence-card { background: white; padding: 15px; margin-bottom: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-left: 5px solid #669bbc; }
+        .es { font-size: 1.4rem; font-weight: bold; color: #003049; display: block; }
+        .ko { font-size: 1rem; color: #666; margin: 5px 0 10px; display: block; }
+        .tip { font-size: 0.85rem; color: #d62828; font-style: italic; margin-bottom: 10px; display: block; }
+        button { background-color: #669bbc; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #003049; }
+    </style>
+</head>
+<body>
+    <h2>🚫 'H'는 소리가 나지 않아요! (무음)</h2>
+
+    <div class="sentence-card">
+        <span class="es">¡Hola! ¿Qué tal?</span>
+        <span class="ko">안녕! 어떻게 지내?</span>
+        <span class="tip">(호라 X -> 올라 O)</span>
+        <button onclick="speak('¡Hola! ¿Qué tal?')">🔊 듣기</button>
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">Hoy hace sol.</span>
+        <span class="ko">오늘은 해가 떴어요.</span>
+        <span class="tip">(호이 X -> 오이 O)</span>
+        <button onclick="speak('Hoy hace sol.')">🔊 듣기</button>
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">Me gusta el helado.</span>
+        <span class="ko">나는 아이스크림을 좋아해요.</span>
+        <span class="tip">(헬라도 X -> 엘라도 O)</span>
+        <button onclick="speak('Me gusta el helado.')">🔊 듣기</button>
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">El hotel es grande.</span>
+        <span class="ko">그 호텔은 커요.</span>
+        <span class="tip">(호텔 X -> 오뗄 O)</span>
+        <button onclick="speak('El hotel es grande.')">🔊 듣기</button>
+    </div>
+
+    <button onclick="window.close()" style="background-color: #780000; color: white; margin-top: 20px;">팝업 닫기</button>
+
+    <script>
+        function speak(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'es-ES';
+            window.speechSynthesis.speak(utterance);
+        }
+    </script>
+</body>
+</html>
