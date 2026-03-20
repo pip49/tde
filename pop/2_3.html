@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>정관사 El / La 문법 예문</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #f0f4ff; text-align: center; }
+        .sentence-card { background: white; padding: 15px; margin-bottom: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-left: 5px solid #4a90e2; }
+        .es { font-size: 1.4rem; font-weight: bold; color: #2c3e50; display: block; }
+        .ko { font-size: 1rem; color: #666; margin: 5px 0 10px; display: block; }
+        .tip { font-size: 0.85rem; color: #e67e22; font-weight: bold; margin-bottom: 10px; display: block; }
+        .gender-box { display: flex; justify-content: space-around; margin-bottom: 20px; }
+        .gender { padding: 5px 15px; border-radius: 20px; color: white; font-size: 0.9rem; }
+        .male { background-color: #3498db; } /* 남성 */
+        .female { background-color: #e74c3c; } /* 여성 */
+        button { background-color: #4a90e2; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        button:hover { background-color: #357abd; }
+    </style>
+</head>
+<body>
+    <h2>📚 정관사 : El (남성) / La (여성)</h2>
+
+    <div class="gender-box">
+        <span class="gender male">남성 명사 (-o) → El</span>
+        <span class="gender female">여성 명사 (-a) → La</span>
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">El libro es azul.</span>
+        <span class="ko">그 책(남성)은 파란색입니다.</span>
+        <button onclick="speak('El libro es azul.')">🔊 듣기</button>
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">La mesa es grande.</span>
+        <span class="ko">그 탁자(여성)는 큽니다.</span>
+        <button onclick="speak('La mesa es grande.')">🔊 듣기</button>
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">El teléfono está aquí.</span>
+        <span class="ko">그 전화기(남성)가 여기 있어요.</span>
+        <button onclick="speak('El teléfono está aquí.')">🔊 듣기</button>
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">La casa es bonita.</span>
+        <span class="ko">그 집(여성)은 예뻐요.</span>
+        <button onclick="speak('La casa es bonita.')">🔊 듣기</button>
+    </div>
+
+    <button onclick="window.close()" style="background-color: #2c3e50; color: white; margin-top: 20px;">팝업 닫기</button>
+
+    <script>
+        function speak(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'es-ES';
+            window.speechSynthesis.speak(utterance);
+        }
+    </script>
+</body>
+</html>
