@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>알파벳 LL(Doble Ele) 발음 예문</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #f1faee; text-align: center; }
+        .sentence-card { background: white; padding: 15px; margin-bottom: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-left: 5px solid #457b9d; }
+        .es { font-size: 1.4rem; font-weight: bold; color: #1d3557; display: block; }
+        .ko { font-size: 1rem; color: #666; margin: 5px 0 10px; display: block; }
+        .tip { font-size: 0.85rem; color: #e63946; font-weight: bold; margin-bottom: 10px; display: block; }
+        button { background-color: #a8dadc; color: #1d3557; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        button:hover { background-color: #457b9d; color: white; }
+    </style>
+</head>
+<body>
+    <h2>🔔 'LL'은 '이/지' 소리가 나요!</h2>
+    <p style="font-size: 0.9rem; color: #555;">(L 발음과는 완전히 달라요!)</p>
+
+    <div class="sentence-card">
+        <span class="es">¿Cómo se llama?</span>
+        <span class="ko">이름이 무엇인가요?</span>
+        <span class="tip">(야마/쟈마 O, 라마 X)</span>
+        <button onclick="speak('¿Cómo se llama?')">🔊 듣기</button>
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">La llave está aquí.</span>
+        <span class="ko">열쇠가 여기 있어요.</span>
+        <span class="tip">(야베/쟈베 O, 라베 X)</span>
+        <button onclick="speak('La llave está aquí.')">🔊 듣기</button>
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">Llueve mucho hoy.</span>
+        <span class="ko">오늘 비가 많이 와요.</span>
+        <span class="tip">(유에베/쥬에베 O, 루에베 X)</span>
+        <button onclick="speak('Llueve mucho hoy.')">🔊 듣기</button>
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">Me gusta la paella.</span>
+        <span class="ko">나는 빠에야를 좋아해요.</span>
+        <span class="tip">(빠에야 O, 빠엘라 X)</span>
+        <button onclick="speak('Me gusta la paella.')">🔊 듣기</button>
+    </div>
+
+    <button onclick="window.close()" style="background-color: #1d3557; color: white; margin-top: 20px;">팝업 닫기</button>
+
+    <script>
+        function speak(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'es-ES';
+            window.speechSynthesis.speak(utterance);
+        }
+    </script>
+</body>
+</html>

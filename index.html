@@ -343,15 +343,15 @@
     updateDisplay();
 
 function openStudyPopup() {
-    // 챕터 1(index 0)의 발음 카테고리(index 0)일 때만 작동
     if (currentChapter === 0 && currentCategory === 0) {
         let popupFile = "";
 
-        // 인덱스에 따라 열릴 파일 지정
         if (currentIndex === 0) {
-            popupFile = "pop/1_1.html"; // A (Manzana)
+            popupFile = "pop/1_1.html"; // A
         } else if (currentIndex === 1) {
-            popupFile = "pop/1_2.html"; // H (묵음)
+            popupFile = "pop/1_2.html"; // H
+        } else if (currentIndex === 2) {
+            popupFile = "pop/1_3.html"; // LL (추가된 부분)
         }
 
         if (popupFile !== "") {
@@ -363,10 +363,8 @@ function openStudyPopup() {
             window.open(popupFile, 'studyPopup',
                 `width=${width},height=${height},left=${left},top=${top},scrollbars=yes`);
         } else {
-            alert("이 항목은 아직 상세 예문이 준비되지 않았습니다.");
+            alert("상세 예문 준비 중입니다!");
         }
-    } else {
-        alert("첫 번째 챕터의 발음 항목에서 클릭해 보세요!");
     }
 }
 
