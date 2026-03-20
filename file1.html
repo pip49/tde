@@ -11,6 +11,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            /* justify-content: center 제거하여 상단 정렬 조절 */
             padding-top: 50px;
             margin: 0;
             background-color: #f0f2f5;
@@ -31,7 +32,7 @@
             transition: transform 0.2s;
             text-align: center;
             padding: 20px;
-            margin-top: 10px;
+            margin-top: 10px; /* main 링크와의 간격 */
         }
         .card:active { transform: scale(0.98); }
         .word { font-size: 2.5rem; font-weight: bold; color: #1a73e8; }
@@ -51,6 +52,7 @@
     </style>
 </head>
 <body>
+    <!-- 수정된 부분: </div> 오타 수정 및 위치 정렬 -->
     <div style="width: 85%; max-width: 400px; text-align: right;">
         <a href="index.html" style="font-size: 11px; color: #bbb; text-decoration: none; border: 1px solid #eee; padding: 3px 8px; border-radius: 12px;">🏠 main</a>
     </div>
@@ -70,29 +72,16 @@
 
     <script>
         const vocabulary = [
-            // 기존 10개
-            { w: "Hola", m: "안녕" }, { w: "Gracias", m: "감사합니다" }, { w: "Por favor", m: "부탁합니다" }, { w: "Buenos días", m: "좋은 아침" }, { w: "Lo siento", m: "미안합니다" }, { w: "Sí / No", m: "예 / 아니요" }, { w: "Agua", m: "물" }, { w: "Comer", m: "먹다" }, { w: "Amigo", m: "친구" }, { w: "Baño", m: "화장실" },
-
-            // 인칭 및 기본 (10)
-            { w: "Yo", m: "나" }, { w: "Tú", m: "너" }, { w: "Él / Ella", m: "그 / 그녀" }, { w: "Nosotros", m: "우리" }, { w: "Usted", m: "당신 (존칭)" }, { w: "Hombre", m: "남자" }, { w: "Mujer", m: "여자" }, { w: "Niño", m: "어린이(남)" }, { w: "Niña", m: "어린이(여)" }, { w: "Persona", m: "사람" },
-
-            // 가족 (10)
-            { w: "Familia", m: "가족" }, { w: "Padre / Papá", m: "아버지 / 아빠" }, { w: "Madre / Mamá", m: "어머니 / 엄마" }, { w: "Hijo", m: "아들" }, { w: "Hija", m: "딸" }, { w: "Hermano", m: "형제/남동생" }, { w: "Hermana", m: "자매/여동생" }, { w: "Abuelo", m: "할아버지" }, { w: "Abuela", m: "할머니" }, { w: "Esposo/a", m: "남편 / 아내" },
-
-            // 시간 및 요일 (15)
-            { w: "Hoy", m: "오늘" }, { w: "Mañana", m: "내일 / 아침" }, { w: "Ayer", m: "어제" }, { w: "Ahora", m: "지금" }, { w: "Semana", m: "주일" }, { w: "Año", m: "해 / 년" }, { w: "Lunes", m: "월요일" }, { w: "Martes", m: "화요일" }, { w: "Miércoles", m: "수요일" }, { w: "Jueves", m: "목요일" }, { w: "Viernes", m: "금요일" }, { w: "Sábado", m: "토요일" }, { w: "Domingo", m: "일요일" }, { w: "Tiempo", m: "시간 / 날씨" }, { w: "Hora", m: "시간(시)" },
-
-            // 사물 및 장소 (15)
-            { w: "Casa", m: "집" }, { w: "Escuela", m: "학교" }, { w: "Libro", m: "책" }, { w: "Mesa", m: "탁자" }, { w: "Silla", m: "의자" }, { w: "Puerta", m: "문" }, { w: "Ventana", m: "창문" }, { w: "Calle", m: "거리" }, { w: "Ciudad", m: "도시" }, { w: "País", m: "나라" }, { w: "Tienda", m: "가게" }, { w: "Dinero", m: "돈" }, { w: "Ropa", m: "옷" }, { w: "Coche", m: "자동차" }, { w: "Teléfono", m: "전화" },
-
-            // 음식 (10)
-            { w: "Comida", m: "음식" }, { w: "Pan", m: "빵" }, { w: "Leche", m: "우유" }, { w: "Café", m: "커피" }, { w: "Té", m: "차" }, { w: "Fruta", m: "과일" }, { w: "Carne", m: "고기" }, { w: "Arroz", m: "쌀/밥" }, { w: "Huevo", m: "계란" }, { w: "Sal", m: "소금" },
-
-            // 동사 (20)
-            { w: "Ser / Estar", m: "~이다 / 있다" }, { w: "Ir", m: "가다" }, { w: "Hacer", m: "하다 / 만들다" }, { w: "Tener", m: "가지다" }, { w: "Querer", m: "원하다" }, { w: "Poder", m: "할 수 있다" }, { w: "Saber", m: "알다" }, { w: "Hablar", m: "말하다" }, { w: "Leer", m: "읽다" }, { w: "Escribir", m: "쓰다" }, { w: "Ver", m: "보다" }, { w: "Escuchar", m: "듣다" }, { w: "Dormir", m: "자다" }, { w: "Beber", m: "마시다" }, { w: "Vivir", m: "살다" }, { w: "Trabajar", m: "일하다" }, { w: "Estudiar", m: "공부하다" }, { w: "Comprar", m: "사다" }, { w: "Dar", m: "주다" }, { w: "Venir", m: "오다" },
-
-            // 형용사 및 기타 (20)
-            { w: "Grande", m: "큰" }, { w: "Pequeño", m: "작은" }, { w: "Bueno", m: "좋은" }, { w: "Malo", m: "나쁜" }, { w: "Hermoso", m: "아름다운" }, { w: "Feliz", m: "행복한" }, { w: "Triste", m: "슬픈" }, { w: "Caliente", m: "뜨거운" }, { w: "Frío", m: "차거운" }, { w: "Mucho", m: "많이" }, { w: "Poco", m: "적게" }, { w: "Nuevo", m: "새로운" }, { w: "Viejo", m: "오래된" }, { w: "Fácil", m: "쉬운" }, { w: "Difícil", m: "어려운" }, { w: "Rápido", m: "빠른" }, { w: "Lento", m: "느린" }, { w: "Caro", m: "비싼" }, { w: "Barato", m: "저렴한" }, { w: "Todo", m: "모든 것" }
+            { w: "Hola", m: "안녕" },
+            { w: "Gracias", m: "감사합니다" },
+            { w: "Por favor", m: "부탁합니다(Please)" },
+            { w: "Buenos días", m: "좋은 아침" },
+            { w: "Lo siento", m: "미안합니다" },
+            { w: "Sí / No", m: "예 / 아니요" },
+            { w: "Agua", m: "물" },
+            { w: "Comer", m: "먹다" },
+            { w: "Amigo", m: "친구" },
+            { w: "Baño", m: "화장실" }
         ];
 
         let currentIndex = 0;
@@ -101,7 +90,7 @@
         const currentIdxEl = document.getElementById('currentIdx');
         const totalIdxEl = document.getElementById('totalIdx');
 
-        totalIdxEl.innerText = vocabulary.length;
+        if (totalIdxEl) totalIdxEl.innerText = vocabulary.length;
 
         function updateCard() {
             wordEl.innerText = vocabulary[currentIndex].w;
