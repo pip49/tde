@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>알파벳 R(Ere) 발음 예문</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #e9edc9; text-align: center; }
+        .sentence-card { background: white; padding: 15px; margin-bottom: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-left: 5px solid #606c38; }
+        .es { font-size: 1.4rem; font-weight: bold; color: #283618; display: block; }
+        .ko { font-size: 1rem; color: #666; margin: 5px 0 10px; display: block; }
+        .tip { font-size: 0.85rem; color: #bc6c25; font-weight: bold; margin-bottom: 10px; display: block; }
+        button { background-color: #606c38; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        button:hover { background-color: #283618; }
+    </style>
+</head>
+<body>
+    <h2>🚀 'R'은 혀를 굴리는 소리에요!</h2>
+    <p style="font-size: 0.9rem; color: #555;">(단어 맨 앞이나 RR은 강하게 떨어주세요)</p>
+
+    <div class="sentence-card">
+        <span class="es">El perro은(는) 귀여워요.</span>
+        <span class="ko">그 개는 귀여워요.</span>
+        <span class="tip">(뻬로 X -> 뻬ㄹ르로 O, 강한 떨림)</span>
+        <button onclick="speak('El perro es lindo.')">🔊 듣기</button>
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">Rosa es una flor.</span>
+        <span class="ko">장미는 꽃입니다.</span>
+        <span class="tip">(로사 X -> ㄹ르로사 O, 단어 첫 'R'은 강하게)</span>
+        <button onclick="speak('Rosa es una flor.')">🔊 듣기</button>
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">El carro es rápido.</span>
+        <span class="ko">그 차는 빨라요.</span>
+        <span class="tip">(라삐도 X -> ㄹ르라삐도 O)</span>
+        <button onclick="speak('El carro es rápido.')">🔊 듣기</button>
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">Mira 그(el) 강(río).</span>
+        <span class="ko">저 강을 봐요.</span>
+        <span class="tip">(리오 X -> ㄹ르리오 O)</span>
+        <button onclick="speak('Mira el río.')">🔊 듣기</button>
+    </div>
+
+    <button onclick="window.close()" style="background-color: #283618; color: white; margin-top: 20px;">팝업 닫기</button>
+
+    <script>
+        function speak(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'es-ES';
+            window.speechSynthesis.speak(utterance);
+        }
+    </script>
+</body>
+</html>
