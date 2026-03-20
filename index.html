@@ -140,7 +140,7 @@
 
     <div class="card">
         <div id="itemCounter">1 / 5</div>
-        <div class="main-text" id="mainText">Hola</div>
+	<div class="main-text" id="mainText" onclick="openStudyPopup()" title="클릭하여 예문 보기">Hola</div>
         <div class="sub-text" id="subText">안녕 (올라)</div>
         <button class="btn-speak" onclick="speak()">🔊 발음 듣기</button>
     </div>
@@ -341,6 +341,22 @@
     }
 
     updateDisplay();
+
+function openStudyPopup() {
+    // 현재 챕터가 1(index 0)이고, 카테고리가 발음(index 0), 첫 번째 항목(A/Manzana)일 때만 작동
+    if (currentChapter === 0 && currentCategory === 0 && currentIndex === 0) {
+        const width = window.screen.width / 2;
+        const height = window.screen.height / 2;
+        const left = window.screen.width / 4;
+        const top = window.screen.height / 4;
+
+        window.open('pop/1_1.html', 'studyPopup',
+            `width=${width},height=${height},left=${left},top=${top},scrollbars=yes`);
+    } else {
+        alert("이 항목은 추가 예문이 없습니다. 첫 번째 챕터의 'A' 항목에서 시도해 보세요!");
+    }
+}
+
 </script>
 
 </body>

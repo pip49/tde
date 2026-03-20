@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>알파벳 A와 사과(Manzana) 예문</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #f0f4f8; text-align: center; }
+        .sentence-card { background: white; padding: 15px; margin-bottom: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .es { font-size: 1.5rem; font-weight: bold; color: #1d3557; display: block; }
+        .ko { font-size: 1rem; color: #666; margin: 5px 0 10px; display: block; }
+        button { background-color: #e63946; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #d62828; }
+    </style>
+</head>
+<body>
+    <h2>🍎 'A'와 'Manzana' 예문 학습</h2>
+
+    <div class="sentence-card">
+        <span class="es">La manzana es roja.</span>
+        <span class="ko">사과는 빨개요.</span>
+        <button onclick="speak('La manzana es roja.')">🔊 듣기</button>
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">Yo como una manzana.</span>
+        <span class="ko">나는 사과 한 개를 먹어요.</span>
+        <button onclick="speak('Yo como una manzana.')">🔊 듣기</button>
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">Me gusta la manzana.</span>
+        <span class="ko">나는 사과를 좋아해요.</span>
+        <button onclick="speak('Me gusta la manzana.')">🔊 듣기</button>
+    </div>
+
+    <div class="sentence-card">
+        <span class="es">Hay una manzana en la mesa.</span>
+        <span class="ko">탁자 위에 사과가 하나 있어요.</span>
+        <button onclick="speak('Hay una manzana en la mesa.')">🔊 듣기</button>
+    </div>
+
+    <button onclick="window.close()" style="background-color: #457b9d; margin-top: 20px;">닫기</button>
+
+    <script>
+        function speak(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'es-ES';
+            window.speechSynthesis.speak(utterance);
+        }
+    </script>
+</body>
+</html>
